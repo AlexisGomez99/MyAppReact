@@ -4,9 +4,17 @@ import "./index.css";
 import Persona from "./Persona";
 import reportWebVitals from "./reportWebVitals";
 
+let estudiante = {
+  nombre: "Alexis",
+  apellido: "Gomez",
+  email: "ralexisge@gmail.com",
+  dni: "42456256",
+  materias: [{materia:"Matematicas", hora:"4 horas"},{materia:"Base de datos",hora:"6 horas"}],
+};
+
 ReactDOM.render(
   <React.StrictMode>
-    <Persona />
+    <Persona/>
   </React.StrictMode>,
   document.getElementById("root")
 );
