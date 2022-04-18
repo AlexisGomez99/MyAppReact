@@ -23,6 +23,8 @@ export default class Persona extends Component {
   handlerChange = (event) => {
     const { name, value } = event.target;
     const { nuevaMateria } = this.state;
+    console.log(name);
+    console.log(value);
     this.setState({ nuevaMateria: { ...nuevaMateria, [name]: value } });
   };
   handlerSumbit = () => {

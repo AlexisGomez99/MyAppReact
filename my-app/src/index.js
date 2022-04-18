@@ -1,20 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Persona from "./Persona";
+import ListarEstudiantes from "./ListarEstudiantes";
 import reportWebVitals from "./reportWebVitals";
-
-let estudiante = {
-  nombre: "Alexis",
-  apellido: "Gomez",
-  email: "ralexisge@gmail.com",
-  dni: "42456256",
-  materias: [{materia:"Matematicas", hora:"4 horas"},{materia:"Base de datos",hora:"6 horas"}],
-};
 
 ReactDOM.render(
   <React.StrictMode>
-    <Persona/>
+    <ListarEstudiantes />
   </React.StrictMode>,
   document.getElementById("root")
 );
