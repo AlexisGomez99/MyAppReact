@@ -1,13 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-//import Persona from "./Persona";
-//import ListarEstudiantes from "./ListarEstudiantes";
+import Persona from "./Persona";
+import ListarEstudiantes from "./ListarEstudiantes";
 import reportWebVitals from "./reportWebVitals";
 import Formulario from "./Formulario";
 
 ReactDOM.render(
   <React.StrictMode>
+    <Persona />
+    <ListarEstudiantes />
     <Formulario />
   </React.StrictMode>,
   document.getElementById("root")

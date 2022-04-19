@@ -69,7 +69,7 @@ export default class Persona extends Component {
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
             crossorigin="anonymous"
           ></link>
-          <table className="table table-dark table-striped">
+          <table class="table table-dark table-sm">
             <thead>
               <tr>
                 <th scope="col">materias</th>
