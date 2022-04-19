@@ -46,6 +46,9 @@ export default class ListarEstudiantes extends Component {
   render() {
     return (
       <div>
+        <br />
+        <br />
+        <br />
         <div>
           <button onClick={this.listarMateria}>Lista Materias</button>
           <br />
