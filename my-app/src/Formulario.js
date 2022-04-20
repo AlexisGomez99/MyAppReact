@@ -10,7 +10,7 @@ export default class Formulario extends Component {
         nombre: "",
         apellido: "",
         legajo: "",
-        materias: [],
+        materias: [], // <------
         edad: "",
         carrera: "",
       },
@@ -26,7 +26,7 @@ export default class Formulario extends Component {
         nombre: this.state.form.nombre,
         apellido: this.state.form.apellido,
         legajo: this.state.form.legajo,
-        materias: ["Materia 1", "Materia 2"],
+        materias: [this.state.form.materias], //<-------
         edad: this.state.form.edad,
         carrera: this.state.form.carrera,
       }),
@@ -126,7 +126,7 @@ export default class Formulario extends Component {
             </div>
             <br />
             <div className="estiloDiv">
-              <select name="materia" onChange={this.handlerChange}>
+              <select name="materias" onChange={this.handlerChange}>
                 {this.state.materiaslog.map((mat) => (
                   <option value={mat.materia}>{mat.materia}</option>
                 ))}
