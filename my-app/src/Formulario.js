@@ -10,12 +10,12 @@ export default class Formulario extends Component {
         nombre: "",
         apellido: "",
         legajo: "",
-        materia: "",
+        materias: [],
         edad: "",
         carrera: "",
       },
       resultado: "",
-      materias: [],
+      materiaslog: [],
     };
   }
   componentDidMount() {
@@ -23,7 +23,7 @@ export default class Formulario extends Component {
       .then((r) => r.json())
       .then((json) => {
         this.setState({
-          materias: json.materias,
+          materiaslog: json.materias,
         });
       });
   }
@@ -44,18 +44,20 @@ export default class Formulario extends Component {
       body: JSON.stringify({
         nombre: this.state.form.nombre,
         apellido: this.state.form.apellido,
-        legajo: this.state.form.apellido,
-        materia: [this.state.form.materia],
+        legajo: this.state.form.legajo,
+        materias: this.state.form.materia,
         edad: this.state.form.edad,
         carrera: this.state.form.carrera,
       }),
     })
       .then((resp) => resp.json())
       .then((json) => {
-        if (json.result == "error") {
+        if (json.result === "error") {
           this.setState({
             resultado: json.message,
           });
+          console.log(this.state.form);
+          return;
         }
         this.setState({
           resultado: "El estudiante fue creado con exito!",
@@ -65,13 +67,6 @@ export default class Formulario extends Component {
   render() {
     return (
       <div>
-        <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-          crossOrigin="anonymous"
-        ></link>
-
         <div className="estilo">
           <form>
             <label>Nombre </label>
@@ -131,19 +126,13 @@ export default class Formulario extends Component {
             <br />
             <div className="estiloDiv">
               <select name="materia" onChange={this.handlerChange}>
-                {this.state.materias.map((mat) => (
+                {this.state.materiaslog.map((mat) => (
                   <option value={mat.materia}>{mat.materia}</option>
                 ))}
               </select>
             </div>
-            <button
-              type="submit"
-              class="btn btn-primary"
-              onClick={this.handlerSumbit}
-            >
-              Submit
-            </button>
           </form>
+          <button onClick={this.handlerSumbit}>Submit</button>
           <p>{this.state.resultado}</p>
         </div>
       </div>
