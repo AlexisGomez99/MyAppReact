@@ -18,6 +18,33 @@ export default class Formulario extends Component {
       materiaslog: [],
     };
   }
+
+  handlerSumbit(e) {
+    fetch("http://localhost:1234/estudiantes", {
+      method: "POST",
+      body: JSON.stringify({
+        nombre: this.state.form.nombre,
+        apellido: this.state.form.apellido,
+        legajo: this.state.form.legajo,
+        materias: ["Materia 1", "Materia 2"],
+        edad: this.state.form.edad,
+        carrera: this.state.form.carrera,
+      }),
+    })
+      .then((resp) => resp.json())
+      .then((json) => {
+        if (json.result === "error") {
+          this.setState({
+            resultado: json.message,
+          });
+          console.log(this.state.form);
+          return;
+        }
+        this.setState({
+          resultado: "El estudiante fue creado con exito!",
+        });
+      });
+  }
   componentDidMount() {
     fetch("http://localhost:1234/materias")
       .then((r) => r.json())
@@ -37,32 +64,6 @@ export default class Formulario extends Component {
         [nombre]: valor,
       },
     }));
-  }
-  handlerSumbit(e) {
-    fetch("http://localhost:1234/estudiantes", {
-      method: "POST",
-      body: JSON.stringify({
-        nombre: this.state.form.nombre,
-        apellido: this.state.form.apellido,
-        legajo: this.state.form.legajo,
-        materias: this.state.form.materia,
-        edad: this.state.form.edad,
-        carrera: this.state.form.carrera,
-      }),
-    })
-      .then((resp) => resp.json())
-      .then((json) => {
-        if (json.result === "error") {
-          this.setState({
-            resultado: json.message,
-          });
-          console.log(this.state.form);
-          return;
-        }
-        this.setState({
-          resultado: "El estudiante fue creado con exito!",
-        });
-      });
   }
   render() {
     return (
